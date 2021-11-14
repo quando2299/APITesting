@@ -1,0 +1,22 @@
+﻿1. Create new database in Sql Management
+- Paste this script to init Database and Table:
+-------------
+create database APITestingDemo
+
+use APITestingDemo
+
+create table Categories (
+	ID int primary key identity(1,1),
+	Name nvarchar(50) not null
+)
+
+create table Products (
+	ID uniqueidentifier primary key default newid(),
+	Name nvarchar(100) not null,
+	Description nvarchar(200) not null,
+	Price int not null,
+	CategoryID int foreign key references Categories(ID)
+)
+-------------------------
+
+2. Change Data Source in appsetting.json
